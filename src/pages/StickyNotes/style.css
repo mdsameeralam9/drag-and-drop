@@ -1,0 +1,17 @@
+.stickynotes {}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 2rem;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.header>.addnote {
+    cursor: pointer;
+    background: black;
+    color: white;
+    border: none;
+    padding: 5px 1rem;
+}

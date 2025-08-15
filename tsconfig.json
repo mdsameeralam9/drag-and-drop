@@ -1,0 +1,32 @@
+// tsconfig.app.json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    // Add these types for Jest and Testing Library
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    // Add esModuleInterop for better module compatibility
+    "esModuleInterop": true
+  },
+  // Include your application source code and the Jest setup file
+  "include": ["src/**/*.ts", "src/**/*.tsx", "jest.setup.ts"], // Adjust if your source files are located differently
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
