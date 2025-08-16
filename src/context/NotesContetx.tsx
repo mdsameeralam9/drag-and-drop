@@ -1,6 +1,5 @@
 import React, {
   createContext,
-  useContext,
   useState,
   ReactNode,
   FC,
@@ -17,12 +16,6 @@ interface NotesContextProps {
 
 // Define the shape of the context value
 interface ContextType {
-  notes: (NoteInterface | null)[];
-  setNotes: React.Dispatch<React.SetStateAction<(NoteInterface | null)[]>>;
-  showDialog: boolean;
-  setShowDialog: React.Dispatch<React.SetStateAction<boolean>>;
-  theme: string;
-  setTheme: React.Dispatch<React.SetStateAction<string>>;
   notesAllData: NotesAllDataInterface;
   setNotesAllData: React.Dispatch<React.SetStateAction<NotesAllDataInterface>>;
   currentDragingItem: CurrentDragingItemInterface | null;
@@ -35,10 +28,6 @@ interface ContextType {
 export const ContextProvider = createContext<ContextType | undefined>(undefined);
 
 const NotesContext: FC<NotesContextProps> = ({ children }) => {
-  const [theme, setTheme] = useState<string>("light");
-  const [notes, setNotes] = useState<(NoteInterface | null)[]>([]);
-  const [showDialog, setShowDialog] = useState<boolean>(false);
-
   const [notesAllData, setNotesAllData] = useState<NotesAllDataInterface>({
     yetToStart: [
       { id: 1, title: "yetToStart Note", content: "Sample Content" },
@@ -60,12 +49,6 @@ const NotesContext: FC<NotesContextProps> = ({ children }) => {
   return (
     <ContextProvider.Provider
       value={{
-        notes,
-        setNotes,
-        showDialog,
-        setShowDialog,
-        theme,
-        setTheme,
         notesAllData,
         setNotesAllData,
         currentDragingItem,

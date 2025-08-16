@@ -1,4 +1,3 @@
-import React from 'react'
 import NotesList from './NotesList'
 
 const NotesSection = ({ section="Start", secClass="yetStrat", sectionKey="", data=[] }) => {

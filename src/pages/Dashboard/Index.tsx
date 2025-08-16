@@ -1,7 +1,5 @@
-import React from 'react'
 import NotesSection from '../../components/NotesSection'
 import useNotesContext from '../../hooks/useNotesContext';
-
 
 const NotesDashboard = () => {
   const { notesAllData={} } = useNotesContext();
