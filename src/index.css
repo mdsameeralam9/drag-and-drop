@@ -112,6 +112,10 @@ textarea {
   max-width: 300px;
 }
 
+.notesSection{
+   min-width: 250px;
+  max-width: 300px;
+}
 .notesSection> h3 {
   border-bottom: 1px solid;
   margin-bottom: 10px;

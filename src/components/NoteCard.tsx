@@ -1,11 +1,17 @@
 import React from "react";
-import { useNotesContext } from "../context/NotesContetx";
+import { NoteInterface } from "../types";
+import useNotesContext from "../hooks/useNotesContext";
 
-const NoteCard = ({ item }) => {
+interface NoteCardProps {
+  item: NoteInterface
+  sectionKey: string;
+}
+
+const NoteCard:React.FC<NoteCardProps> = ({ item, sectionKey }) => {
   const { setCurrentDragingItem } = useNotesContext();
 
-  const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
-    setCurrentDragingItem({ ...item });
+  const handleDragStart = () => {
+    setCurrentDragingItem({dragItemKey: sectionKey, dragItem: item});
   };
 
   return (

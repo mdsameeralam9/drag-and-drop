@@ -5,14 +5,14 @@ import React, {
   ReactNode,
   FC,
 } from "react";
+import {
+  CurrentDragingItemInterface,
+  NoteInterface,
+  NotesAllDataInterface,
+} from "../types";
 
 interface NotesContextProps {
   children: ReactNode;
-}
-
-export interface NoteInterface {
-  title: string;
-  content: string;
 }
 
 // Define the shape of the context value
@@ -23,34 +23,39 @@ interface ContextType {
   setShowDialog: React.Dispatch<React.SetStateAction<boolean>>;
   theme: string;
   setTheme: React.Dispatch<React.SetStateAction<string>>;
+  notesAllData: NotesAllDataInterface;
+  setNotesAllData: React.Dispatch<React.SetStateAction<NotesAllDataInterface>>;
+  currentDragingItem: CurrentDragingItemInterface | null;
+  setCurrentDragingItem: React.Dispatch<
+    React.SetStateAction<CurrentDragingItemInterface | null>
+  >;
 }
 
 // Provide a default value for the context with correct typing
-const ContextProvider = createContext<ContextType | undefined>(undefined);
-
-// Custom hook to use the context with type safety
-export const useNotesContext = () => {
-  const context = useContext(ContextProvider);
-  if (!context) {
-    throw new Error(
-      "useNotesContext must be used within a NotesContext provider"
-    );
-  }
-  return context;
-};
+export const ContextProvider = createContext<ContextType | undefined>(undefined);
 
 const NotesContext: FC<NotesContextProps> = ({ children }) => {
   const [theme, setTheme] = useState<string>("light");
   const [notes, setNotes] = useState<(NoteInterface | null)[]>([]);
   const [showDialog, setShowDialog] = useState<boolean>(false);
 
-  const [notesAllData, setNotesAllData] = useState({
-    yetToStart: [{ title: "yetToStart Note", content: "Sample Content" }],
-    progress: [{ title: "progress Note", content: "Sample Content" }],
-    completed: [{ title: "completed Note", content: "Sample Content" }],
+  const [notesAllData, setNotesAllData] = useState<NotesAllDataInterface>({
+    yetToStart: [
+      { id: 1, title: "yetToStart Note", content: "Sample Content" },
+      { id: 2, title: "yetToStart Note", content: "Sample Content" },
+    ],
+    progress: [
+      { id: 3, title: "progress Note", content: "Sample Content" },
+      { id: 4, title: "progress Note", content: "Sample Content" },
+    ],
+    completed: [
+      { id: 5, title: "completed Note", content: "Sample Content" },
+      { id: 6, title: "completed Note", content: "Sample Content" },
+    ],
   });
 
-  const [currentDragingItem, setCurrentDragingItem] = useState<NoteInterface | null>(null);
+  const [currentDragingItem, setCurrentDragingItem] =
+    useState<CurrentDragingItemInterface | null>(null);
 
   return (
     <ContextProvider.Provider

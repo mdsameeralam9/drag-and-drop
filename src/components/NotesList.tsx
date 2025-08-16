@@ -1,6 +1,6 @@
 import React from "react";
 import NoteCard from "./NoteCard";
-import { useNotesContext } from "../context/NotesContetx";
+import useNotesContext from "../hooks/useNotesContext";
 
 interface NoteListProps {
   sectionKey: string;
@@ -14,9 +14,9 @@ const NotesList: React.FC<NoteListProps> = ({ sectionKey = "", data = [] }) => {
     console.log("dropped", currentDragingItem, sectionKey, (data = []));
     setNotesAllData((all) => {
       const copy = { ...all };
-      copy[sectionKey] = [...copy[sectionKey], currentDragingItem];
+      copy[sectionKey] = [...copy[sectionKey], currentDragingItem?.dragItem];
 
-      copy["yetToStart"] = [];
+      copy[currentDragingItem?.dragItemKey] = [...copy[currentDragingItem?.dragItemKey]].filter(i => i.id !== currentDragingItem?.dragItem.id)
 
       return copy;
     });
@@ -29,7 +29,7 @@ const NotesList: React.FC<NoteListProps> = ({ sectionKey = "", data = [] }) => {
       onDrop={handleDrop}
     >
       {data.map((item, index) => (
-       <NoteCard item={item} key={index} />
+       <NoteCard item={item} sectionKey={sectionKey} key={index} />
       ))}
     </div>
   );
