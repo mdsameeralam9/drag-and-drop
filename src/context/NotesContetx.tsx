@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, ReactNode, FC } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  FC,
+} from "react";
 
 interface NotesContextProps {
   children: ReactNode;
@@ -26,18 +32,41 @@ const ContextProvider = createContext<ContextType | undefined>(undefined);
 export const useNotesContext = () => {
   const context = useContext(ContextProvider);
   if (!context) {
-    throw new Error('useNotesContext must be used within a NotesContext provider');
+    throw new Error(
+      "useNotesContext must be used within a NotesContext provider"
+    );
   }
   return context;
 };
 
 const NotesContext: FC<NotesContextProps> = ({ children }) => {
-  const [theme, setTheme] = useState<string>('light');
+  const [theme, setTheme] = useState<string>("light");
   const [notes, setNotes] = useState<(NoteInterface | null)[]>([]);
   const [showDialog, setShowDialog] = useState<boolean>(false);
 
+  const [notesAllData, setNotesAllData] = useState({
+    yetToStart: [{ title: "yetToStart Note", content: "Sample Content" }],
+    progress: [{ title: "progress Note", content: "Sample Content" }],
+    completed: [{ title: "completed Note", content: "Sample Content" }],
+  });
+
+  const [currentDragingItem, setCurrentDragingItem] = useState<NoteInterface | null>(null);
+
   return (
-    <ContextProvider.Provider value={{ notes, setNotes, showDialog, setShowDialog, theme, setTheme }}>
+    <ContextProvider.Provider
+      value={{
+        notes,
+        setNotes,
+        showDialog,
+        setShowDialog,
+        theme,
+        setTheme,
+        notesAllData,
+        setNotesAllData,
+        currentDragingItem,
+        setCurrentDragingItem,
+      }}
+    >
       {children}
     </ContextProvider.Provider>
   );

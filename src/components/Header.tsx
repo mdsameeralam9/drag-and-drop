@@ -5,7 +5,7 @@ const Header = () => {
   const { setShowDialog } = useNotesContext()
   return (
     <header className='header'>
-        <h2>Sticky Notes</h2>
+        <h2>Notes</h2>
         <button className='addnote' type='button' aria-label='add notes' onClick={() => setShowDialog(true)}>+ Add Note</button>
     </header>
   )

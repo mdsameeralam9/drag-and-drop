@@ -1,8 +1,14 @@
-import StickyNotes from "./pages/StickyNotes"
+import Header from "./components/Header"
+import NotesContext from "./context/NotesContetx"
+import NotesDashboard from "./pages/Dashboard/Index"
 
 function App() {
   return (
-   <StickyNotes />
+    <NotesContext>
+        <Header  />
+        <NotesDashboard />
+    </NotesContext>
+   
   )
 }
 

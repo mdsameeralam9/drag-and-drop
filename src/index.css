@@ -1,10 +1,10 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.dialog{
+.dialog {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -15,7 +15,7 @@
   background: transparent;
 }
 
-.dialog > .dialog-content{
+.dialog>.dialog-content {
   background: white;
   width: 300px;
   border: 1px solid lightgray;
@@ -27,15 +27,111 @@
   padding: 1rem;
 }
 
-.dialog > .dialog-content > input, textarea{
- width: 100%;
- padding: 4px;
+.dialog>.dialog-content>input,
+textarea {
+  width: 100%;
+  padding: 4px;
 }
 
-.dialog-action{
-  display: flex
-;
-    justify-content: end;
-    width: 100%;
-    gap: 1rem;
+.dialog-action {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  gap: 1rem;
+}
+
+.stickynotes {}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 2rem;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.2);
+  background: white;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.header>.addnote {
+  cursor: pointer;
+  background: black;
+  color: white;
+  border: none;
+  padding: 5px 1rem;
+}
+
+.noteCard {
+  width: 140px;
+  height: 100px;
+  border: 1px solid lightgray;
+  cursor: grabbing;
+  user-select: none;
+}
+
+.notes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.notesdashboard {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.listWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: auto;
+    height: 80vh;
+}
+
+.listWrap>.list {
+  border: 1px solid;
+  border-radius: 2px;
+  cursor: grab;
+  background: #efefdc;
+}
+
+.listWrap>.list>.note {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  user-select: none;
+  min-width: 250px;
+  max-width: 300px;
+}
+
+.notesSection> h3 {
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+  overflow: auto;
+}
+
+.yetStrat{
+  color: red;
+}
+
+.progress{
+  color: #FF9800;
+}
+
+.completed{
+  color: green;
+}
+
+.textWrap{
+  text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }

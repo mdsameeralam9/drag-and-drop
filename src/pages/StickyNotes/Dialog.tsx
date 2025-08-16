@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NoteInterface, useNotesContext } from "../context/NotesContetx";
+import { NoteInterface, useNotesContext } from "../../context/NotesContetx";
 
 const Dialog = () => {
   const { setShowDialog, setNotes } = useNotesContext();

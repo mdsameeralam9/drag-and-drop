@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../../components/Header'
-import Notes from '../../components/Notes';
+import Notes from './Notes';
 import "./style.css";
 import NotesContext from '../../context/NotesContetx';
 
